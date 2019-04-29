@@ -1,0 +1,236 @@
+1
+
+                    Execution started at 20180908.132842         
+
+
+
+                    ---------------------------------------
+                                     SWAN
+                    SIMULATION OF WAVES IN NEAR SHORE AREAS
+                             VERSION NUMBER 40.91A              
+                    ---------------------------------------
+
+
+    
+ PROJECT 'Shoreface' ' '
+    
+  'SHOREFACE'
+    
+  'Bathymetry: 1/160 slope'
+    
+  'COMMENTS'
+    
+ 
+    
+ MODE STATIONARY TWODIMENSIONAL
+    
+ 
+    
+ SET INRHOG 1 NAUTICAL
+    
+ COORDINATES CARTESIAN
+    
+ 
+    
+ && KEYWORD for number of nested SWAN grids.
+ NSGRIDS 1
+    
+ 
+    
+ && KEYWORDS TO CREATE AND READ COMPUTATIONAL GRID &&
+ CGRID CURVILINEAR 70 100 EXC 9.999000e+003 &
+         CIRCLE 90 0.04 0.5 30
+ Resolution in sigma-space: df/f =  0.0878
+    
+ READGRID COORDINATES 1 'grids/shoreface_dx40_hmax35_m0125_vwall/swan_coord.grd' 4 0 0 FREE
+    
+ 
+    
+ && KEYWORDS TO CREATE AND READ BATHYMETRY GRID &&
+ INPGRID BOTTOM CURVILINEAR 0 0 70 100 EXC 9.999000e+003
+    
+ READINP BOTTOM  1 'grids/shoreface_dx40_hmax35_m0125_vwall/swan_bathy.bot' 4 0 FREE
+    
+ 
+    
+ && BOUNDARY FORCING &&
+ BOUNDPAR1 SHAPESPEC JONSWAP 3.3 PEAK DSPR DEGREES
+    
+ BOUNDPAR2 SEGMENT IJ 0 0 0 100  CONSTANT PAR 3.0 6. 270. 5.
+    
+ 
+    
+ & Restart name **********************************
+ &INIT HOTSTART 'swan_restart.dat'
+ 
+    
+ & PHYSICS  **************************************
+ GEN3
+    
+ FRICTION MADSEN 0.03
+    
+ OFF QUAD
+    
+ OFF WCAP
+    
+ OFF FSH
+    
+ 
+    
+ BLOCK 'COMPGRID' NOHEADER 'depth.dat'  LAY 4 DEPTH 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'watlev.dat' LAY 4 WATLEV 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'botlev.dat' LAY 4 BOTLEV 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'vel.dat'    LAY 4 VEL 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'fric.dat'   LAY 4 FRCOEF  1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'dissip.dat'  LAY 4 DISS 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'disb.dat'   LAY 4 DISB 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'dissu.dat'  LAY 4 DISSU 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'disw.dat'   LAY 4 DISW 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'hsig.dat'   LAY 4 HSIGN 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'rtp.dat'    LAY 4 RTP 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'tm02.dat'   LAY 4 TM02 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'tmbot.dat'  LAY 4 TMBOT 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'ubot.dat'   LAY 4 UBOT 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'wdir.dat'   LAY 4 DIR 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'pdir.dat'   LAY 4 PDIR 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'wlen.dat'   LAY 4 WLEN 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'lwavp.dat'  LAY 4 LWAVP 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'qb.dat'     LAY 4 QB 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'xp.dat'     LAY 4 XP 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'yp.dat'     LAY 4 YP 1.
+    
+ BLOCK 'COMPGRID' NOHEADER 'setup.dat'  LAY 4 SETUP 1.
+    
+ 
+    
+ COMPUTE
+ ** Warning          : Limiter is de-activated in case of no quadruplets
+
+----------------------------------------------------------------
+                  COMPUTATIONAL PART OF SWAN
+----------------------------------------------------------------
+
+ Gridresolution       : MXC              71 MYC            101
+                      : MCGRD          7172
+                      : MSC              31 MDC             90
+                      : MTC               1
+                      : NSTATC            0 ITERMX          50
+ Propagation flags    : ITFRE             0 IREFR            1
+ Source term flags    : IBOT              3 ISURF            1
+                      : IWCAP             0 IWIND            0
+                      : ITRIAD            0 IQUAD            0
+                      : IVEG              0
+ Spatial step         : DX       0.0000E+00 DY      0.0000E+00
+ Spectral bin         : df/f     0.8784E-01 DDIR    0.4000E+01
+ Physical constants   : GRAV     0.9810E+01 RHO     0.1025E+04
+ Wind input           : WSPEED   0.0000E+00 DIR     0.0000E+00
+ Tail parameters      : E(f)     0.4000E+01 E(k)    0.2500E+01
+                      : A(f)     0.5000E+01 A(k)    0.3000E+01
+ Accuracy parameters  : DREL     0.2000E-01 NPNTS   0.9800E+02
+                      : DHOVAL   0.2000E-01 DTOVAL  0.2000E-01
+                      : GRWMX    0.1000E+21
+ Drying/flooding      : LEVEL    0.0000E+00 DEPMIN  0.5000E-01
+ The nautical  convention for wind and wave directions is used
+ Scheme for geographic propagation is SORDUP
+ Scheme geogr. space  : PROPSC            2 ICMAX            5
+ Scheme spectral space: CSS      0.5000E+00 CDD     0.5000E+00
+ Current is off
+ Quadruplets is off
+ Triads is off
+ Madsen et al. (`84)  : MF      -0.8000E-01 KN      0.3000E-01
+ Vegetation is off
+ Whitecapping is off
+ Battjes&Janssen (`78): ALPHA    0.1000E+01 GAMMA   0.7300E+00
+ Set-up is off
+ Diffraction is off
+ Janssen (`89,`90)    : ALPHA    0.1000E-01 KAPPA   0.4100E+00
+ Janssen (`89,`90)    : RHOA     0.1280E+01 RHOW    0.1025E+04
+
+ 1st and 2nd gen. wind: CF10     0.1880E+03 CF20    0.5900E+00
+                      : CF30     0.1200E+00 CF40    0.2500E+03
+                      : CF50     0.2300E-02 CF60   -0.2230E+00
+                      : CF70     0.0000E+00 CF80   -0.5600E+00
+                      : RHOAW    0.1249E-02 EDMLPM  0.3600E-02
+                      : CDRAG    0.1230E-02 UMIN    0.1000E+01
+                      : LIM_PM   0.1300E+00
+
+ iteration    1; sweep 1 grid   1
+ iteration    1; sweep 2 grid   1
+ iteration    1; sweep 3 grid   1
+ iteration    1; sweep 4 grid   1
+ accuracy OK in   1.41 % of wet grid points ( 98.00 % required)
+
+ iteration    2; sweep 1 grid   1
+ iteration    2; sweep 2 grid   1
+ iteration    2; sweep 3 grid   1
+ iteration    2; sweep 4 grid   1
+ accuracy OK in  86.26 % of wet grid points ( 98.00 % required)
+
+ iteration    3; sweep 1 grid   1
+ iteration    3; sweep 2 grid   1
+ iteration    3; sweep 3 grid   1
+ iteration    3; sweep 4 grid   1
+ accuracy OK in  89.14 % of wet grid points ( 98.00 % required)
+
+ iteration    4; sweep 1 grid   1
+ iteration    4; sweep 2 grid   1
+ iteration    4; sweep 3 grid   1
+ iteration    4; sweep 4 grid   1
+ accuracy OK in  97.18 % of wet grid points ( 98.00 % required)
+
+ iteration    5; sweep 1 grid   1
+ iteration    5; sweep 2 grid   1
+ iteration    5; sweep 3 grid   1
+ iteration    5; sweep 4 grid   1
+ accuracy OK in  98.62 % of wet grid points ( 98.00 % required)
+
+
++SWAN is processing output request    1
++SWAN is processing output request    2
++SWAN is processing output request    3
++SWAN is processing output request    4
++SWAN is processing output request    5
++SWAN is processing output request    6
++SWAN is processing output request    7
++SWAN is processing output request    8
++SWAN is processing output request    9
++SWAN is processing output request   10
++SWAN is processing output request   11
++SWAN is processing output request   12
++SWAN is processing output request   13
++SWAN is processing output request   14
++SWAN is processing output request   15
++SWAN is processing output request   16
++SWAN is processing output request   17
++SWAN is processing output request   18
++SWAN is processing output request   19
++SWAN is processing output request   20
++SWAN is processing output request   21
++SWAN is processing output request   22
+    
+ &COMPUTE STATIONARY 20000101.000000
+ &COMPUTE NONSTATIONARY 20000101.000000 60 SEC 20000101.120000
+ &HOTFILE 'swangrid1.rst'
+ 
+    
+ STOP

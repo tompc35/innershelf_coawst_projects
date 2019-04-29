@@ -1,0 +1,51 @@
+1
+
+                    Execution started at 20160917.171411         
+
+
+
+                    ---------------------------------------
+                                     SWAN
+                    SIMULATION OF WAVES IN NEAR SHORE AREAS
+                             VERSION NUMBER 40.91A              
+                    ---------------------------------------
+
+
+    
+ PROJECT 'Shoreface' ' '
+    
+  'SHOREFACE'
+    
+  'Bathymetry: 1/160 slope'
+    
+  'COMMENTS'
+    
+ 
+    
+ MODE NONSTATIONARY TWODIMENSIONAL
+    
+ 
+    
+ SET INRHOG 1 NAUTICAL
+    
+ COORDINATES CARTESIAN
+    
+ 
+    
+ && KEYWORD for number of nested SWAN grids.
+ NSGRIDS 1
+    
+ 
+    
+ && KEYWORDS TO CREATE AND READ COMPUTATIONAL GRID &&
+ CGRID CURVILINEAR 70 100 EXC 9.999000e+003 &
+         CIRCLE 90 0.04 0.5 30
+ Resolution in sigma-space: df/f =  0.0878
+    
+ READGRID COORDINATES 1 'grids/shoreface_dx40_hmax35_m0125_vwall/swan_coord.grd' 4 0 0 FREE
+ ** Terminating error: File cannot be opened/does not exist: grids/shoreface_dx40_hmax35_m0125_vwall/swan_coord.grd                          
+    
+ 
+    
+ && KEYWORDS TO CREATE AND READ BATHYMETRY GRID &&
+ INPGRID BOTTOM CURVILINEAR 0 0 70 100 EXC 9.999000e+003

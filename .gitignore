@@ -1,0 +1,17 @@
+*his*.nc
+*dia*.nc
+*rst*.nc
+Klopman_Chan_*/
+Shoreface_v31_bs/
+YouBF*/
+Build/
+coawstS
+coawstM
+*.exe
+*.bak
+old/
+log.*
+*.rst*
+*.in~
+*.h~
+
