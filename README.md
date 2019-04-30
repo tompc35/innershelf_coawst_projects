@@ -14,12 +14,12 @@ All ROMS code is licensed under a MIT/X style license (see License_ROMS.txt).
 
 #### Project directories
 
-InnerShelf - 
-Shoreface_Scandura_bs - 
-Shoreface_event	- 
-Shoreface_v31_bsf - 
-Shoreface_v31_swanonly - 
-lentz_test - 
-lentz_test_BSF - 
+* InnerShelf - Response to wind stress in a periodic channel with varying stratification and bottom slope.
+* Shoreface_Scandura_bs - Response to wave forcing in laboratory setting (Scandura and Foti).
+* Shoreface_event	- Response to combined wind and wave forcing.
+* Shoreface_v31_bsf - Sensitivity to bottom streaming parameterization over idealized shoreface.
+* Shoreface_v31_swanonly - Input files to generate wave forcing for Shoreface runs in SWAN.
+* lentz_test - Response to wave forcing in 1D water column, sensitivity to stratification.
+* lentz_test_BSF - Effects of bottom streaming parameterization in 1D water column.
 
 
