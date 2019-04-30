@@ -1,0 +1,42 @@
+from subprocess import call
+
+N2 = ["0.0", "0.00001", "0.00005", "0.0001", "0.0005", "0.001"]
+find_string = "!change strat"
+
+pre_string = "            t(i,j,k,1,itemp)=T0(ng)+"
+post_string = "_r8*(z_r(i,j,k)+35.0_r8) \n"
+
+expt_name1 = "swan_2m_7s_10deg_m00625_vwall_hvisc5_BSWK_strat"
+
+in_filename = "ana_initial.h"
+base_filename = in_filename + ".base"
+
+for N2str in N2:
+	print "Running with ..."
+	# Write out new .in file
+	fbase = open(base_filename)
+	fin = open(in_filename,"w")
+	dTdz = float(N2str)/(9.81*0.00017)
+	dTdzstr = "%04f" % (dTdz)
+	for line in fbase:
+		if find_string in line:
+			fin.write(pre_string+dTdzstr+post_string)
+			print "dT/dz = "+dTdzstr+" C m^-1"
+			print "N2 = "+ N2str+" s^-2"
+		else:
+			fin.write(line)
+	fbase.close()
+	fin.close()
+
+	run_name = expt_name1+N2str[2:]	
+	log_name = "log."+run_name
+	print "building..."
+	call("./coawst.bash &> build.log",shell=True)	
+	print "running..."
+	call("./coawstS.exe < ocean_shoreface.in > " + log_name,shell=True)
+	print "copying..."
+	call("mkdir RUNS/"+run_name,shell=True)
+	call("cp * RUNS/"+run_name,shell=True)
+	call("rm "+log_name,shell=True)
+
+print "Done!"
